@@ -25,7 +25,8 @@ body {
 }
 
 .headline h1 {
-    font-size: 100px;
+    font-family: "Lobster";
+    font-size: 120px;
     color:  rgba(27, 59, 121, 0.9) ;
     background:#2196F3;
     background: rgba(255, 255, 255, 0.50);
@@ -46,7 +47,7 @@ body {
     margin-top: 15px;
     padding: 7px 16px;
     border: 0px solid #2196F3;
-    border-radius: 100%!important;
+    border-radius: 0%!important;
     font-size: 70px;
     color: rgba(27, 59, 121, 0.9);
     background: 0 0;
@@ -103,14 +104,20 @@ The padding is very important to make sure the scrollspy picks up the right area
 of those sections to manage the look and feel of the site. */
 
 
+.cabecalho{
+  font-family: "Montserrat";
+}
+
 .about-section {
+    background: #76a5af;
     height: 100%;
-    padding-top: 150px;
+    font-size: 30px;
+    padding-top: 50px;
     text-align: center;
-    background: #eee;
 }
 
 .services-section {
+  font-family: "Nixie One";
     height: 100%;
     padding-top: 50px;
     text-align: center;
@@ -119,7 +126,7 @@ of those sections to manage the look and feel of the site. */
 
 .contact-section {
     height: 100%;
-    padding-top: 150px;
+    padding-top: 50px;
     text-align: center;
     background: #eee;
 }
