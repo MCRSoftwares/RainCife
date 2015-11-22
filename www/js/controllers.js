@@ -13,9 +13,19 @@ angular.module('starter.controllers', ['ngOpenFB'])
     //      $window.location.href = "/#/app/login";
     //})
     console.log("Login user: " + viewController.loginData.username + "- PW: " + viewController.loginData.password);
-    $window.localStorage['usuario'] = JSON.stringify(viewController.loginData);
+
+    //Local Storage temporário, APAGAR!!
+    var usuario = JSON.parse($window.localStorage['usuario'] || '{}');
+
+    if (viewController.loginData.username == usuario.username && viewController.loginData.password == usuario.password){
+      alert("Bem vindo " + usuario.username);
+      $window.location.href = '/#/app/mapa';
+    }
+    //Local Storage temporário, APAGAR!!
+
   };
 
+  //Recomendo fazer um controller separado pro login com o Facebook
   this.fbLogin = function () {
     ngFB.login({scope: 'public_profile, '}).then(
         function (response) {
@@ -52,6 +62,8 @@ angular.module('starter.controllers', ['ngOpenFB'])
     //}, function(){
     //      $window.location.href = "/#/app/cadastro";
     //})
+    $window.localStorage['usuario'] = JSON.stringify(viewController.data);
+    $window.location.href = '/#/app/login';
   }
 })
 
@@ -72,8 +84,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
 
 //>>>>>>> 0061b48d72272ea91cf6c91a062a4dba8b4ce792
 //controler para buscar a geolocalizção Atual do Usuário
-.controller('MapCtrl', function($scope, $ionicLoading, $cordovaGeolocation, $rootScope) {
-  alert("Bem vindo ao RainCife " + $rootScope.user.name);
+.controller('MapCtrl', function($scope, $ionicLoading, $cordovaGeolocation) {
   $scope.centerOnMe = function () {
     $scope.loading = $ionicLoading.show({
       content: 'Buscando Localização Atual...',
