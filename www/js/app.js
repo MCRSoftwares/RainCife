@@ -70,7 +70,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngMap','ngCordova', 
       }
     })
 
-<<<<<<< HEAD
     .state('app.logout', {
       url: '/logout',
       views: {
@@ -81,20 +80,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngMap','ngCordova', 
       }
     })
 
-
-||||||| merged common ancestors
-=======
-  .state('app.logout', {
-      url: '/logout',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/inicial.html',
-          controller: 'LogoutController as Logout'
-        }
-      }
-    })
-
->>>>>>> 0061b48d72272ea91cf6c91a062a4dba8b4ce792
   .state('app.cadastro', {
     url: '/cadastro',
     views: {
