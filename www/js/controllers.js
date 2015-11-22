@@ -54,6 +54,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
   }
 })
 
+<<<<<<< HEAD
 .controller("LogoutController", function($timeout, $ionicLoading, $ionicHistory, $rootScope){
 
     $timeout(function () {
@@ -65,6 +66,19 @@ angular.module('starter.controllers', ['ngOpenFB'])
     $rootScope.user = {};
 })
 
+||||||| merged common ancestors
+=======
+.controller("LogoutController", function($timeout, $ionicLoading, $ionicHistory){
+
+    $timeout(function () {
+        $ionicLoading.hide();
+        $ionicHistory.clearCache();
+        $ionicHistory.clearHistory();
+        $ionicHistory.nextViewOptions({ disableBack: true, historyRoot: true });
+        }, 30);
+})
+
+>>>>>>> 0061b48d72272ea91cf6c91a062a4dba8b4ce792
 //controler para buscar a geolocalizção Atual do Usuário
 .controller('MapCtrl', function($scope, $ionicLoading, $cordovaGeolocation, $rootScope) {
   alert("Bem vindo ao RainCife " + $rootScope.user.name);
