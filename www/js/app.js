@@ -69,6 +69,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngMap','ngCordova'])
       }
     })
 
+  .state('app.logout', {
+      url: '/logout',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/inicial.html',
+          controller: 'LogoutController as Logout'
+        }
+      }
+    })
+
   .state('app.cadastro', {
     url: '/cadastro',
     views: {
