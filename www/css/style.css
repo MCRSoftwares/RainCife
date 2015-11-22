@@ -6,3 +6,7 @@ map {
 .scroll {
   height: 100%;
 }
+.ouLogin{
+  color: white;
+  font-weight: bold;
+}
