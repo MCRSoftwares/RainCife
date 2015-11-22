@@ -1,22 +1,39 @@
-<ion-view view-title="Cadastro">
-  <ion-content class="padding">
-    <div class="list">
-      <label class="item item-input">
-        <input type="text" placeholder="Nome" ng-model="CadastroController.data.nome">
-      </label>
-      <label class="item item-input">
-        <input type="text" placeholder="Sobrenome" ng-model="CadastroController.data.sobrenome">
-      </label>
-      <label class="item item-input">
-        <input type="email" placeholder="Email" ng-model="CadastroController.data.email">
-      </label>
-      <label class="item item-input">
-        <input type="password" placeholder="Senha" ng-model="CadastroController.data.senha">
-      </label>
-      <label class="item item-input">
-        <input type="password" placeholder="Confirmar Senha">
-      </label>
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Cadastrar</h1>
+    <div class="buttons">
+      <a class="button button-clear" href="#/app/search">Fechar</a>
     </div>
-    <button class="button button-positive col col-50 col-offset-25">Cadastrar</button>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="doLogin()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Usuário</span>
+          <input type="text" ng-model="Cadastro.data.username">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">E-mail</span>
+          <input type="email" ng-model="Cadastro.data.email">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Senha</span>
+          <input type="password" ng-model="Cadastro.data.password">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Confirmar Senha</span>
+          <input type="password">
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Cadastrar</button>
+        </label>
+      </div>
+      <p class="text-center"><b>OU</b></p>
+      <label class="item text-center">
+        <h2>Realizar Cadastro com:</h2>
+        <a class="facebook-sign-in button button-large  ion-social-facebook" ng-click="/">    Facebook</a>
+        <a class="google-sign-in button button-large ion-social-google" ng-click="/">     Google+</a>
+      </label>
+    </form>
   </ion-content>
-</ion-view>
+</ion-modal-view>

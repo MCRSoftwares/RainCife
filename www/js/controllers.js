@@ -1,32 +1,54 @@
 angular.module('starter.controllers', [])
 
-.controller('LoginCtrl', function($http){
+.controller('AppCtrl', function($http) {
   var viewController = this;
-  viewController.data = {};
+  viewController.loginData = {};
 
   this.login = function () {
     //TODO
-    //$http.post('/url do servidor', viewController.data.username, viewController.data.password)
+    //$http.post('/url do servidor', viewController.loginData.username, viewController.loginData.password)
     //.then(function(){
     //  redirectTo: "Url da página principal";
     //}, function(){
     //      redirectTo: "/login";
     //})
-    console.log("Login user: " + viewController.data.username + "- PW: " + viewController.data.password);
-  }
+    console.log("Login user: " + viewController.loginData.username + "- PW: " + viewController.loginData.password);
+  };
 })
 
-.controller('CadastroCtrl', function(){
+.controller('CadastroController', function(){
   var viewController = this;
   viewController.data = {};
 
   this.cadastrar = function () {
     //TODO
-    //$http.post('/url do servidor', viewController.data.nome, viewController.data.sobrenome, viewController.data.email, viewController.data.senha)
+    //$http.post('/url do servidor', viewController.data.username, viewController.data.email, viewController.data.password)
     //.then(function(){
     //  redirectTo: "/login";
     //}, function(){
     //      redirectTo: "/cadastro";
     //})
   }
+})
+
+//controler para buscar a geolocalizção Atual do Usuário
+.controller('MapCtrl', function($scope, $ionicLoading, $cordovaGeolocation) {
+  $scope.centerOnMe = function () {
+    $scope.loading = $ionicLoading.show({
+      content: 'Buscando Localização Atual...',
+      showBackdrop: false
+    });
+    //se não conseguir acessar a geolocalização em 10 segundos ele "estoura" o tempo e dá erro.
+      var posOptions = {timeout: 10000, enableHighAccuracy: true};
+      $cordovaGeolocation
+       .getCurrentPosition(posOptions)
+       .then(function (position) {
+         var lat  = position.coords.latitude
+         var long = position.coords.longitude
+         $scope.map.setCenter(new google.maps.LatLng(lat, long));
+         $scope.loading.hide();
+     }, function(error) {
+       alert('Erro ao tentar conseguir localização: ' + error.message);
+     });
+  };
 });

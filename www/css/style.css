@@ -1,1 +1,12 @@
-/* Empty. Add your own CSS if you like */
+map {
+  display: block;
+  width: 100%;
+  height: 97%;
+}
+.scroll {
+  height: 100%;
+}
+.ouLogin{
+  color: white;
+  font-weight: bold;
+}
