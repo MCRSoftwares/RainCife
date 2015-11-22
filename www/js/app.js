@@ -64,7 +64,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngMap','ngCordova'])
       views: {
         'menuContent': {
           templateUrl: 'templates/login.html',
-          controller: 'AppCtrl'
+          controller: 'AppCtrl as App'
+        }
+      }
+    })
+
+  .state('app.logout', {
+      url: '/logout',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/inicial.html',
+          controller: 'LogoutController as Logout'
         }
       }
     })
@@ -74,7 +84,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngMap','ngCordova'])
     views: {
       'menuContent': {
         templateUrl: 'templates/cadastro.html',
-        controller: ''
+        controller: 'CadastroController as Cadastro'
       }
     }
   });

@@ -10,14 +10,14 @@
       <div class="list">
         <label class="item item-input">
           <span class="input-label">Usuário</span>
-          <input type="text" ng-model="loginData.username">
+          <input type="text" ng-model="App.loginData.username">
         </label>
         <label class="item item-input">
           <span class="input-label">Senha</span>
-          <input type="password" ng-model="loginData.password">
+          <input type="password" ng-model="App.loginData.password">
         </label>
         <label class="item">
-          <button class="button button-block button-positive" type="submit">Entrar</button>
+          <button class="button button-block button-positive" type="submit" ng-click="App.login()">Entrar</button>
         </label>
       </div>
       <p class="text-center"><b>OU</b></p>

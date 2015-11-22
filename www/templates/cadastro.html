@@ -10,30 +10,24 @@
       <div class="list">
         <label class="item item-input">
           <span class="input-label">Usuário</span>
-          <input type="text" ng-model="loginData.username">
+          <input type="text" ng-model="Cadastro.data.username">
         </label>
         <label class="item item-input">
           <span class="input-label">E-mail</span>
-          <input type="email" ng-model="loginData.email">
+          <input type="email" ng-model="Cadastro.data.email">
         </label>
         <label class="item item-input">
           <span class="input-label">Senha</span>
-          <input type="password" ng-model="loginData.password">
+          <input type="password" ng-model="Cadastro.data.password">
         </label>
         <label class="item item-input">
           <span class="input-label">Confirmar Senha</span>
-          <input type="password" ng-model="loginData.repassword">
+          <input type="password">
         </label>
         <label class="item">
           <button class="button button-block button-positive" type="submit">Cadastrar</button>
         </label>
       </div>
-      <p class="text-center"><b>OU</b></p>
-      <label class="item text-center">
-        <h2>Realizar Cadastro com:</h2>
-        <a class="facebook-sign-in button button-large  ion-social-facebook" ng-click="/">    Facebook</a>
-        <a class="google-sign-in button button-large ion-social-google" ng-click="/">     Google+</a>
-      </label>
     </form>
   </ion-content>
 </ion-modal-view>
