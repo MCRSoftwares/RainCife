@@ -31,6 +31,16 @@ angular.module('starter.controllers', [])
   }
 })
 
+.controller("LogoutController", function($timeout, $ionicLoading, $ionicHistory){
+
+    $timeout(function () {
+        $ionicLoading.hide();
+        $ionicHistory.clearCache();
+        $ionicHistory.clearHistory();
+        $ionicHistory.nextViewOptions({ disableBack: true, historyRoot: true });
+        }, 30);
+})
+
 //controler para buscar a geolocalizção Atual do Usuário
 .controller('MapCtrl', function($scope, $ionicLoading, $cordovaGeolocation) {
   $scope.centerOnMe = function () {
