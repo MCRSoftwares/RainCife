@@ -20,6 +20,9 @@ angular.module('starter.controllers', ['ngOpenFB'])
     if (viewController.loginData.username == usuario.username && viewController.loginData.password == usuario.password){
       alert("Bem vindo " + usuario.username);
       $window.location.href = '/#/app/mapa';
+    }else{
+      alert("Usuário ou Senha Incorreto");
+      $window.location.href = '/#/app/login';
     }
     //Local Storage temporário, APAGAR!!
 
