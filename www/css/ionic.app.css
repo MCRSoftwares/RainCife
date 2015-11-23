@@ -7738,3 +7738,10 @@ a.button {
           color: #FFF;
           background-color: #dd4c39;
           border-color: #dc4430; }
+  .button-inicial{
+    border-radius: 4px;
+    font-weight: 500;
+    color: #FFF;
+    background-color: #0c387a;
+    border-color: #0e3f8a; }
+  }

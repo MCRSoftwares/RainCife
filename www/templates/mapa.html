@@ -1,11 +1,13 @@
-<ion-view view-title="RainCife">
-    <ion-nav-buttons side="right">
-          <button class="button button-icon button-clear ion-android-locate" ng-click="centerOnMe()">
-          </button>
-    </ion-nav-buttons>
-    <ion-content class="has-header" scroll="false" data-tap-disabled="true">
-        <map zoom="15" center="[-8.06, -34.882]" style="height:100%;" map-type-control="false">
-           <control name="overviewMap" opened="true" />
-        </map>
-    </ion-content>
-</ion-view>
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-view view-title="RainCife" >
+      <ion-nav-buttons side="right">
+            <button class="button button-icon button-clear ion-android-locate" ng-click="centerOnMe()">
+            </button>
+      </ion-nav-buttons>
+      <ion-content class="has-header" scroll="false" data-tap-disabled="true">
+          <map zoom="15" center="[-8.06, -34.882]" style="height:100%;" map-type-control="false">
+             <control name="overviewMap" opened="true" />
+          </map>
+      </ion-content>
+  </ion-view>
+</ion-side-menus>

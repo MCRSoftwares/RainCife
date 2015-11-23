@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['ngOpenFB'])
 
-.controller('AppCtrl', function($http, $ionicModal, $timeout, ngFB, $scope, $rootScope, $window) {
+.controller('AppCtrl', function($http, $ionicModal, $timeout, ngFB, $scope, $rootScope, $window, $ionicHistory) {
   var viewController = this;
   viewController.loginData = {};
 
@@ -18,10 +18,10 @@ angular.module('starter.controllers', ['ngOpenFB'])
     var usuario = JSON.parse($window.localStorage['usuario'] || '{}');
 
     if (viewController.loginData.username == usuario.username && viewController.loginData.password == usuario.password){
-      alert("Bem vindo " + usuario.username);
+    // não acho intuitivo colocar um alerta para das as boa   alert("Bem vindo " + usuario.username);
       $window.location.href = '/#/app/mapa';
     }else{
-      alert("Usuário ou Senha Incorreto");
+      alert("Usuários ou Senha Incorreto");
       $window.location.href = '/#/app/login';
     }
     //Local Storage temporário, APAGAR!!
