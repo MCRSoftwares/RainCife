@@ -31,7 +31,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
         function (response) {
             if (response.status === 'connected') {
                 console.log('Facebook login succeeded');
-                
+
                 ngFB.api({
                     path: '/me',
                     params: {fields: 'id,name'}
@@ -85,6 +85,9 @@ angular.module('starter.controllers', ['ngOpenFB'])
 //>>>>>>> 0061b48d72272ea91cf6c91a062a4dba8b4ce792
 //controler para buscar a geolocalizção Atual do Usuário
 .controller('MapCtrl', function($scope, $ionicLoading, $cordovaGeolocation) {
+  $scope.$on('mapInitialized', function(event, map) {
+    $scope.map = map;
+  });
   $scope.centerOnMe = function () {
     $scope.loading = $ionicLoading.show({
       content: 'Buscando Localização Atual...',
