@@ -1,12 +1,16 @@
 <ion-side-menus enable-menu-with-back-views="false">
-  <ion-view view-title="RainCife" >
+  <ion-view view-title="" >
+
       <ion-nav-buttons side="right">
-            <button class="button button-icon button-clear ion-android-locate" ng-click="centerOnMe()">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input  class="icon ion-search placeholder-icon" placeholder="Pesquisar Um Endereço" places-auto-complete ng-model="vm.address" on-place-changed="vm.placeChanged()"/>
+                <button class="button button-icon button-clear ion-android-locate" ng-click="vm.centerOnMe()">
             </button>
+
       </ion-nav-buttons>
       <ion-content class="has-header" scroll="false" data-tap-disabled="true">
-          <map zoom="15" center="[-8.06, -34.882]" style="height:100%;" map-type-control="false">
-             <control name="overviewMap" opened="true" />
+          <map zoom="17" on-click="vm.addMarker()" center="current" style="height:100%;" map-type-control="false" on-click="addMarker()" on-tap="addMarker()">
+            <marker ng-repeat="p in vm.positions" position="{{p.pos}}" title="pos: {{p.pos}}"></marker>
           </map>
       </ion-content>
   </ion-view>

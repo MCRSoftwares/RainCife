@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'ngMap','ngCordova', 'ngOpenFB'])
+angular.module('starter', ['ionic', 'starter.controllers', 'ngMap','ngCordova', 'ngOpenFB', "ngAutocomplete"])
 
 .run(function($ionicPlatform, ngFB) {
   ngFB.init({appId: '1643726282551336'});
@@ -55,7 +55,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngMap','ngCordova', 
       views: {
         'menuContent': {
           templateUrl: 'templates/mapa.html',
-          controller: 'MapCtrl'
+          controller: 'MapCtrl as vm'
         }
       }
     })

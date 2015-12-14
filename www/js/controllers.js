@@ -87,11 +87,13 @@ angular.module('starter.controllers', ['ngOpenFB'])
 
 //>>>>>>> 0061b48d72272ea91cf6c91a062a4dba8b4ce792
 //controler para buscar a geolocalizção Atual do Usuário
-.controller('MapCtrl', function($scope, $ionicLoading, $cordovaGeolocation) {
+.controller('MapCtrl', function($scope, $ionicLoading, $cordovaGeolocation, NgMap) {
+   var vm = this;
   $scope.$on('mapInitialized', function(event, map) {
     $scope.map = map;
   });
-  $scope.centerOnMe = function () {
+  vm.centerOnMe = function () {
+    console.log("to aqui");
     $scope.loading = $ionicLoading.show({
       content: 'Buscando Localização Atual...',
       showBackdrop: false
@@ -109,4 +111,22 @@ angular.module('starter.controllers', ['ngOpenFB'])
        alert('Erro ao tentar conseguir localização: ' + error.message);
      });
   };
+
+  // geo-coding
+  vm.placeChanged = function() {
+    vm.place = this.getPlace();
+    console.log('location', vm.place.geometry.location);
+    vm.map.setCenter(vm.place.geometry.location);
+  }
+  vm.positions =[
+
+ ];
+  vm.addMarker = function(event) {
+   var ll = event.latLng;
+   vm.positions.push({pos:[ll.lat(), ll.lng()]});
+ }
+
+  NgMap.getMap().then(function(map) {
+    vm.map = map;
+  });
 });
