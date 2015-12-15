@@ -1,29 +1,32 @@
-<ion-modal-view>
+<ion-modal-view >
   <ion-header-bar>
     <h1 class="title">Cadastrar</h1>
     <div class="buttons">
       <a class="button button-clear" href="#/app/search">Fechar</a>
     </div>
   </ion-header-bar>
-  <ion-content>
+  <ion-content scroll="false">
     <form ng-submit="Cadastro.cadastrar()">
       <div class="list">
         <label class="item item-input">
           <span class="input-label">Usuário</span>
-          <input type="text" ng-model="Cadastro.data.username">
+          <input type="text" ng-model="Cadastro.data.username" placeholder="Usuario">
         </label>
         <label class="item item-input">
           <span class="input-label">E-mail</span>
-          <input type="email" ng-model="Cadastro.data.email">
+          <input type="email" ng-model="Cadastro.data.email" placeholder="exmeplo@email.com">
         </label>
-        <label class="item item-input">
+        <label class="item item-input item-stacked-label">
           <span class="input-label">Senha</span>
-          <input type="password" ng-model="Cadastro.data.password">
+          <input type="text" ng-if="showPasswordIsChecked" name="password" ng-model="Cadastro.data.password" placeholder="Senha">
+          <input type="password" ng-if="!showPasswordIsChecked" name="password" ng-model="Cadastro.data.password"  placeholder="*****">
         </label>
-        <label class="item item-input">
-          <span class="input-label">Confirmar Senha</span>
-          <input type="password">
-        </label>
+        <label>
+        <ion-checkbox ng-model="showPasswordIsChecked">Mostrar senha<BR></ion-checkbox>
+          <span class="text-muted">
+          Caso queria confimar sua senha antes de cadastrar.
+          </span>
+      </label>
         <label class="item">
           <button class="button button-block button-positive" type="submit">Cadastrar</button>
         </label>

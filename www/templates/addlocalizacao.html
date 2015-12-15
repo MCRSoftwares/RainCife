@@ -1,0 +1,27 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-calm">
+    <h1 class="title">Novo alagamento</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="modal.hide()">Cancel</button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <form name="locationForm" ng-submit="vm.addMarker()">
+      <div class="list">
+        <label class="item text-center">
+          <h2><b>Qual estado está a rua?<b></h2>
+        </label>
+        <label class="item ">
+          <div class="button-bar">
+            <a class="button button-small button-calm" ng-click="vm.pouco()">Pouca Alagada</a>
+            <a class="button button-small button-calm" ng-click="vm.alagado()">Alagada</a>
+            <a class="button button-small button-calm" ng-click="vm.muito()">Muito Alagada</a>
+          </div>
+        </label>
+      </div>
+      <div class="padding">
+        <button class="button button-block button-calm" ng-disabled="locationForm.$invalid">Adicionar Novo Alagamento</button>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>
