@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'ngMap','ngCordova', 'ngOpenFB'])
+angular.module('starter', ['ionic', 'starter.controllers', 'ngMap','ngCordova', 'ngOpenFB', "ngAutocomplete"])
 
 .run(function($ionicPlatform, ngFB) {
   ngFB.init({appId: '1643726282551336'});
@@ -37,7 +37,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngMap','ngCordova', 
     url: '/inicial',
     views: {
       'menuContent': {
-        templateUrl: 'templates/inicial.html'
+        templateUrl: 'templates/inicial.html',
+        controller: 'CadastroController as Cadastro'
+
       }
     }
   })
@@ -55,7 +57,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngMap','ngCordova', 
       views: {
         'menuContent': {
           templateUrl: 'templates/mapa.html',
-          controller: 'MapCtrl'
+          controller: 'MapCtrl as vm'
         }
       }
     })
@@ -88,7 +90,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngMap','ngCordova', 
         controller: 'CadastroController as Cadastro'
       }
     }
-  });
+  })
+  .state('app.addlocalizacao', {
+    url: '/addlocalizacao',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/addlocalizacao.html',
+        controller: 'MapCtrl as vm'
+      }
+    }
+  }
+);
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/inicial');
 });
