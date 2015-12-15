@@ -37,7 +37,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngMap','ngCordova', 
     url: '/inicial',
     views: {
       'menuContent': {
-        templateUrl: 'templates/inicial.html'
+        templateUrl: 'templates/inicial.html',
+        controller: 'CadastroController as Cadastro'
+
       }
     }
   })
@@ -88,7 +90,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngMap','ngCordova', 
         controller: 'CadastroController as Cadastro'
       }
     }
-  });
+  })
+  .state('app.addlocalizacao', {
+    url: '/addlocalizacao',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/addlocalizacao.html',
+        controller: 'MapCtrl as vm'
+      }
+    }
+  }
+);
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/inicial');
 });

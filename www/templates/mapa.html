@@ -9,8 +9,8 @@
 
       </ion-nav-buttons>
       <ion-content class="has-header" scroll="false" data-tap-disabled="true">
-          <map zoom="17" on-click="vm.addMarker()" center="current" style="height:100%;" map-type-control="false" on-click="addMarker()" on-tap="addMarker()">
-            <marker ng-repeat="p in vm.positions" position="{{p.pos}}" title="pos: {{p.pos}}"></marker>
+          <map zoom="17" center="current" style="height:100%;" map-type-control="false" on-click="vm.addlocalizacao()" on-tap="vm.addlocalizacao()">
+            <marker clickable="true" ng-repeat="p in vm.positions" position="{{p.pos}}" title="pos: {{p.pos}}" icon="img/marker.png"> </marker>
           </map>
       </ion-content>
   </ion-view>
