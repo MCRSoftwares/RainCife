@@ -8,8 +8,8 @@
         <button class="button button-icon button-clear ion-android-locate" ng-click="vm.centerOnMe()"></button>
       </ion-nav-buttons>
       <ion-content class="has-header" scroll="false" data-tap-disabled="true">
-          <map zoom="17" center="current" style="height:100%;" map-type-control="false" on-click="vm.addlocalizacao()" on-tap="vm.addlocalizacao()">
-            <marker clickable="true" ng-repeat="p in vm.positions" position="{{p.pos}}" title="pos: {{p.pos}}" icon="img/marker.png"> </marker>
+          <map zoom="17" center=" -8.05428, -34.8813" style="height:100%;" map-type-control="false" on-click="vm.addlocalizacao()" on-tap="vm.addlocalizacao()">
+            <marker clickable="true" ng-repeat="p in vm.positions" position="{{p.pos}}" title="pos: {{p.pos}}" icon="img/marker.png" on-mousedown = "vm.showDetail()"> </marker>
           </map>
       </ion-content>
   </ion-view>

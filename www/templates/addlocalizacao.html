@@ -1,5 +1,5 @@
 <ion-modal-view>
-  <ion-header-bar class="bar-calm">
+  <ion-header-bar class="bar-positive">
     <h1 class="title">Novo alagamento</h1>
     <div class="buttons">
       <button class="button button-clear" ng-click="modal.hide()">Cancel</button>
@@ -13,15 +13,19 @@
         </label>
         <label class="item ">
           <div>
-            <ion-radio ng-model="Locatio.data.choice" ng-value="Pouca Alagada">Pouca Alagada</ion-radio>
-            <ion-radio ng-model="Locatio.data.choice" ng-value="Alagada">Alagada</ion-radio>
-            <ion-radio ng-model="Locatio.data.choice" ng-value="Muito Alagada">Muito Alagada</ion-radio>
+            <ion-radio ng-model="LocatioForm.data.choice" ng-value="Pouca Alagada">Pouca Alagada</ion-radio>
+            <ion-radio ng-model="LocatioForm.data.choice" ng-value="Alagada">Alagada</ion-radio>
+            <ion-radio ng-model="LocatioForm.data.choice" ng-value="Muito Alagada">Muito Alagada</ion-radio>
           </div>
         </label>
       </div>
       <div class="padding">
-        <button class="button button-block button-calm" ng-disabled="locationForm.$invalid">Adicionar Novo Alagamento</button>
+        <button class="button button-block button-positive">Adicionar Novo Alagamento</button>
       </div>
     </form>
+    <info-window style="display: none;" id="marker-info">
+      <h1>teste<h1>
+    </info-window>
+
   </ion-content>
 </ion-modal-view>

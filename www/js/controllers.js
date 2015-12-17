@@ -1,37 +1,30 @@
 angular.module('starter.controllers', ['ngOpenFB'])
-
 .controller('InicialController', function($scope, $ionicSideMenuDelegate){
   $ionicSideMenuDelegate.canDragContent(false);
 })
-
 .controller('AppCtrl', function($http, $ionicModal, $timeout, ngFB, $scope, $rootScope, $window, $ionicHistory) {
   var viewController = this;
-
   viewController.loginData = {};
-
   this.login = function () {
     $http({
         url: 'http://104.236.49.84/api/v1/usuarios/entrar/',
         method: "POST",
-        withCredentials: true,
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         data: {login: viewController.loginData.username, senha: viewController.loginData.password},
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
     })
     .then(function(response) {
+            $window.localStorage['usuario'] = response.data.data[0].id;
             $window.location.href = "/#/app/mapa";
              console.log("sucesso") ;
         },
         function(response) { // optional
-            alert("Usuários ou Senha Incorreto");
             console.log("fracassso") ;
             $window.location.href = "/#/app/login";
         }
     );
     console.log("Login user: " + viewController.loginData.username + "- PW: " + viewController.loginData.password);
-
   };
-
   //Recomendo fazer um controller separado pro login com o Facebook
   this.fbLogin = function () {
     ngFB.login({scope: 'public_profile, '}).then(
@@ -56,12 +49,10 @@ angular.module('starter.controllers', ['ngOpenFB'])
         });
   };
 })
-
 .controller('CadastroController', function($scope, $ionicSideMenuDelegate,$window, $http){
   var viewController = this;
   $ionicSideMenuDelegate.canDragContent(false);
   viewController.data = {};
-
   this.cadastrar = function () {
     $http({
      url: 'http://104.236.49.84/api/v1/usuarios/criar/',
@@ -76,27 +67,27 @@ angular.module('starter.controllers', ['ngOpenFB'])
              $window.location.href = "/#/app/cadastrar";
          }
      );
-     //  $window.localStorage['usuario'] = JSON.stringify(viewController.data);
-    //  $window.location.href = '/#/app/login';
   }
 })
-
-
-.controller("LogoutController", function($timeout, $ionicLoading, $ionicHistory, $rootScope){
+.controller("LogoutController", function($timeout, $ionicLoading, $ionicHistory, $rootScope, $window){
 
     $timeout(function () {
         $ionicLoading.hide();
         $ionicHistory.clearCache();
         $ionicHistory.clearHistory();
+        $window.localStorage['usuario'] = "";
         $ionicHistory.nextViewOptions({ disableBack: true, historyRoot: true });
         }, 30);
-    $rootScope.user = {};
+        $rootScope.user = {};
 })
-.controller('MapCtrl', function($scope, $ionicLoading, $cordovaGeolocation, NgMap,$state, $ionicModal) {
+
+//controler do mapa
+.controller('MapCtrl', function($scope, $ionicLoading, $cordovaGeolocation, NgMap,$state, $ionicModal,$http, $window) {
    var vm = this;
    vm.data = {};
   $scope.$on('mapInitialized', function(event, map) {
     $scope.map = map;
+     vm.loadMarker();
   });
    $ionicModal.fromTemplateUrl('templates/addlocalizacao.html', {
      scope: $scope,
@@ -105,6 +96,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
      $scope.modal = modal
    })
   vm.centerOnMe = function () {
+    vm.loadMarker();
     $scope.loading = $ionicLoading.show({
         templateUrl:"templates/loading.html",
         showBackdrop: false
@@ -124,7 +116,6 @@ angular.module('starter.controllers', ['ngOpenFB'])
       $ionicLoading.hide();
      });
   };
-
   // geo-coding
   vm.placeChanged = function($state) {
     vm.place = this.getPlace();
@@ -132,24 +123,17 @@ angular.module('starter.controllers', ['ngOpenFB'])
     vm.map.setCenter(vm.place.geometry.location);
     $scope.clearSearch();
   }
-
   $scope.clearSearch = function() {
     vm.address = '';
   }
-
-
   vm.positions =[
-
  ];
-
-
  var Location = function() {
        if ( !(this instanceof Location) ) return new Location();
        this.lat  = "";
        this.lng  = "";
        this.estado = "";
      };
-
 vm.addlocalizacao = function(event){
   var ll = event.latLng;
   $scope.newLocation = new Location();
@@ -158,12 +142,36 @@ vm.addlocalizacao = function(event){
   $scope.modal.show();
  }
   vm.addMarker = function(event) {
-   vm.positions.push({pos:[$scope.newLocation.lat, $scope.newLocation.lng, vm.data.choise]});
+    $http({
+     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+     url: 'http://104.236.49.84/api/v1/marcadores/criar/',
+     method: "POST",
+     data: {latitude: String($scope.newLocation.lat),
+     intensidade: String(vm.data.choise),
+     usuario_id: String($window.localStorage['usuario']),
+     longitude: String($scope.newLocation.lng)}
+     })
+   //vm.positions.push({pos:[$scope.newLocation.lat, $scope.newLocation.lng, vm.data.choise]});
    $scope.modal.hide();
    console.log($scope.Locatio);
-
  }
+ vm.showDetail = function(e, positions) {
+   vm.position = positions;
+   vm.map.showInfoWindow.apply('marker-info', '');
+ };
+ vm.loadMarker = function() {
 
+   $http.get("http://104.236.49.84/api/v1/marcadores/")
+   .success(function(response){
+        console.log(response);
+        //vm.positions = response.results;
+        console.log(vm.location);
+        vm.positions.push({pos:[response.data.latitude, response.data.longitude, response.data.intensidade, response.data.id]});
+     })
+     .error(function(response){
+       console.log("o get deu erro");;
+     });
+ };
   NgMap.getMap().then(function(map) {
     vm.map = map;
   });
