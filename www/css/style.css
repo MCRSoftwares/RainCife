@@ -14,3 +14,7 @@ map {
 .button-inicial{
   background-color: #29b6f6;
 }
+
+.icon.ion-search.placeholder-icon{
+  margin -right: 1000px;
+}

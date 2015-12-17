@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'ngMap','ngCordova', 'ngOpenFB', "ngAutocomplete"])
+angular.module('starter', ['ionic', 'starter.controllers', 'ngMap','ngCordova', 'ngOpenFB',,])
 
 .run(function($ionicPlatform, ngFB) {
   ngFB.init({appId: '1643726282551336'});
@@ -23,7 +23,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngMap','ngCordova', 
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+  $httpProvider.defaults.xsrfCookieName = '_xsrf';
+  $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+  $httpProvider.defaults.useXDomain = true;
+  $httpProvider.defaults.withCredentials = true;
+  delete $httpProvider.defaults.headers.common["X-Requested-With"];
+  $httpProvider.defaults.headers.common["Accept"] = "application/json";
+  $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+
   $stateProvider
 
     .state('app', {
@@ -52,6 +60,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngMap','ngCordova', 
         }
       }
     })
+    .state('app.sobre', {
+        url: '/sobre',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/sobre.html'
+          }
+        }
+      })
     .state('app.mapa', {
       url: '/mapa',
       views: {

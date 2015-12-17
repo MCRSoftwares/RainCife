@@ -1,12 +1,11 @@
 <ion-side-menus enable-menu-with-back-views="false">
-  <ion-view view-title="" >
-
-      <ion-nav-buttons side="right">
-                <i class="icon ion-search placeholder-icon"></i>
-                <input  class="icon ion-search placeholder-icon" placeholder="Pesquisar Um Endereço" places-auto-complete ng-model="vm.address" on-place-changed="vm.placeChanged()"/>
-                <button class="button button-icon button-clear ion-android-locate" ng-click="vm.centerOnMe()">
-            </button>
-
+  <ion-view title="">
+      <ion-nav-buttons side ="right">
+        <label class="item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="search" placeholder="Pesquise Um Endereço" places-auto-complete ng-model="vm.address" on-place-changed="vm.placeChanged()">
+        </label>
+        <button class="button button-icon button-clear ion-android-locate" ng-click="vm.centerOnMe()"></button>
       </ion-nav-buttons>
       <ion-content class="has-header" scroll="false" data-tap-disabled="true">
           <map zoom="17" center="current" style="height:100%;" map-type-control="false" on-click="vm.addlocalizacao()" on-tap="vm.addlocalizacao()">
