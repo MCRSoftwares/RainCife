@@ -142,34 +142,34 @@ vm.addlocalizacao = function(event){
   $scope.modal.show();
  }
   vm.addMarker = function(event) {
+    var intensidade = vm.data.choice;
+    if (intensidade == undefined) {
+      intensidade = 'Alagada';
+    }
     $http({
      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
      url: 'http://104.236.49.84/api/v1/marcadores/criar/',
      method: "POST",
      data: {latitude: String($scope.newLocation.lat),
-     intensidade: String(vm.data.choise),
+     intensidade: intensidade,
      usuario_id: String($window.localStorage['usuario']),
      longitude: String($scope.newLocation.lng)}
      })
-   //vm.positions.push({pos:[$scope.newLocation.lat, $scope.newLocation.lng, vm.data.choise]});
    $scope.modal.hide();
-   console.log($scope.Locatio);
+   vm.loadMarker();
  }
  vm.showDetail = function(e, positions) {
    vm.position = positions;
    vm.map.showInfoWindow.apply('marker-info', '');
  };
  vm.loadMarker = function() {
-
    $http.get("http://104.236.49.84/api/v1/marcadores/")
    .success(function(response){
-        console.log(response);
-        //vm.positions = response.results;
-        console.log(vm.location);
-        vm.positions.push({pos:[response.data.latitude, response.data.longitude, response.data.intensidade, response.data.id]});
+        for (var i = 0; i < response.data.length; i++) {
+          vm.positions.push({pos:[parseFloat(response.data[i].latitude), parseFloat(response.data[i].longitude)]});
+        }
      })
      .error(function(response){
-       console.log("o get deu erro");;
      });
  };
   NgMap.getMap().then(function(map) {
