@@ -170,12 +170,14 @@ angular.module('starter.controllers', ['ngOpenFB'])
        this.estado = "";
      };
 vm.addlocalizacao = function(event){
-  var ll = event.latLng;
-  $scope.newLocation = new Location();
-  $scope.newLocation.lat = ll.lat();
-  $scope.newLocation.lng = ll.lng();
-  $scope.modal.show();
- }
+    if (event != undefined) {
+      var ll = event.latLng;
+      $scope.newLocation = new Location();
+      $scope.newLocation.lat = ll.lat();
+      $scope.newLocation.lng = ll.lng();
+      $scope.modal.show();
+    }
+}
   vm.addMarker = function(event) {
     var intensidade = vm.data.choice;
     if (intensidade == undefined) {
@@ -199,6 +201,7 @@ vm.addlocalizacao = function(event){
  vm.loadMarker = function() {
    $http.get("http://104.236.49.84/api/v1/marcadores/")
    .success(function(response){
+       vm.positions = []
         for (var i = 0; i < response.data.length; i++) {
           vm.positions.push({pos:[parseFloat(response.data[i].latitude), parseFloat(response.data[i].longitude)]});
         }
