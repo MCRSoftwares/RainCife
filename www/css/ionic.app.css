@@ -7749,3 +7749,9 @@ a.button {
       color: #fff;
       background-color: #3289c7;
   }
+
+  .test {
+  background: transparent;
+  margin-right: 50%;
+  margin-left: 50%;
+}

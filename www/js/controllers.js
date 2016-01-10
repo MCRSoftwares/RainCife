@@ -1,8 +1,9 @@
 angular.module('starter.controllers', ['ngOpenFB'])
 .controller('InicialController', function($scope, $ionicSideMenuDelegate){
   $ionicSideMenuDelegate.canDragContent(false);
+  $ionicMaterialConfigProvider.enableForAllPlatforms();
 })
-.controller('AppCtrl', function($http, $ionicModal, $timeout, ngFB, $scope, $rootScope, $window, $ionicHistory) {
+.controller('AppCtrl', function($http, $ionicModal, $timeout, ngFB, $scope, $rootScope, $window, $ionicHistory,$state) {
   var viewController = this;
   viewController.loginData = {};
   this.login = function () {
@@ -15,12 +16,14 @@ angular.module('starter.controllers', ['ngOpenFB'])
     })
     .then(function(response) {
             $window.localStorage['usuario'] = response.data.data[0].id;
-            $window.location.href = "/#/app/mapa";
+            $state.go('app.mapa');
              console.log("sucesso") ;
         },
         function(response) { // optional
             console.log("fracassso") ;
-            $window.location.href = "/#/app/login";
+            alert('Usuário ou Senha Invalidos');
+            $state.go('app.login');
+            //$window.location.href = "/#/app/login";
         }
     );
     console.log("Login user: " + viewController.loginData.username + "- PW: " + viewController.loginData.password);
@@ -38,20 +41,27 @@ angular.module('starter.controllers', ['ngOpenFB'])
                 }).then(
                     function (user) {
                         $rootScope.user = user;
-                        $window.location.href = '/#/app/mapa';
+                        //$window.location.href = '/#/app/mapa';
+                        $state.go('app.mapa');
                     },
                     function (error) {
                         console.log('Facebook error: ' + error.error_description);
                     });
             } else {
-                alert('Facebook login failed');
+                alert('Ops, aconteceu algum quando você tentou logar com o Facebook');
             }
         });
   };
 })
-.controller('CadastroController', function($scope, $ionicSideMenuDelegate,$window, $http){
+.controller('CadastroController', function($scope, $ionicSideMenuDelegate,$window, $http, $state,  $ionicModal){
   var viewController = this;
   $ionicSideMenuDelegate.canDragContent(false);
+   $ionicModal.fromTemplateUrl('templates/termoDeUso.html', {
+     scope: $scope,
+     animation: 'slide-in-up'
+   }).then(function(modal) {
+     $scope.modal = modal
+   })
   viewController.data = {};
   this.cadastrar = function () {
     $http({
@@ -61,10 +71,13 @@ angular.module('starter.controllers', ['ngOpenFB'])
      headers: {'Content-Type': 'application/x-www-form-urlencoded'}
      })
      .then(function(response) {
-             $window.location.href = "/#/app/login";
+            // $window.location.href = "/#/app/login";
+             $state.go('app.login');
          },
          function(response) { // optional
-             $window.location.href = "/#/app/cadastrar";
+             //$window.location.href = "/#/app/cadastrar";
+             alert("Cadastro invalido")
+             $state.go('app.cadastro');
          }
      );
   }
@@ -79,6 +92,23 @@ angular.module('starter.controllers', ['ngOpenFB'])
         $ionicHistory.nextViewOptions({ disableBack: true, historyRoot: true });
         }, 30);
         $rootScope.user = {};
+})
+
+
+.controller("previCtrl", function($scope, $ionicLoading, $cordovaGeolocation, $state, $http){
+  var prev = this;
+  prev.isao =[
+ ];
+
+  $http.get("http://api.openweathermap.org/data/2.5/weather?lat=-8.05389&lon=-34.881111&appid=2de143494c0b295cca9337e1e96b00e0'")
+  .success(function(response){
+       for (var i = 0; i < response.data.length; i++) {
+         prev.isao.push({temperatura:parseFloat(response.data[i].temp), tempeaturaMinima: parseFloat(response.data[i].temp_min), tempMaxima: parseFloat(response.data[i].temp_max), tempo:[response.data[i].weather] });
+       }
+    })
+    .error(function(response){
+    });
+    console.console.log(prev.isao);
 })
 
 //controler do mapa

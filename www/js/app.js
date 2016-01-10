@@ -96,13 +96,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngMap','ngCordova', 
         }
       }
     })
-
   .state('app.cadastro', {
     url: '/cadastro',
     views: {
       'menuContent': {
         templateUrl: 'templates/cadastro.html',
         controller: 'CadastroController as Cadastro'
+      }
+    }
+  })
+  .state('app.previsao', {
+    url: '/previsao',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/previsao.html',
+        controller: 'previCtrl as prev'
       }
     }
   })

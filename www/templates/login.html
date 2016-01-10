@@ -1,11 +1,6 @@
-<ion-modal-view>
-  <ion-header-bar>
-    <h1 class="title">Login</h1>
-    <div class="buttons">
-      <a class="button button-clear" href="#/app/search">Fechar</a>
-    </div>
-  </ion-header-bar>
-  <ion-content scroll="false"> 
+<ion-view >
+
+  <ion-content scroll="false">
     <form>
       <div class="list">
         <label class="item item-input">
@@ -23,9 +18,8 @@
       <p class="text-center"><b>OU</b></p>
       <label class="item text-center">
         <h2>Realizar login com:</h2><br>
-        <button class="facebook-sign-in button button-large  ion-social-facebook" ng-click="App.fbLogin()">    Facebook</button>
-        <a class="google-sign-in button button-large ion-social-google">     Google+</a>
+        <button class="facebook-sign-in button button-block  ion-social-facebook" ng-click="App.fbLogin()">    Facebook</button>
       </label>
     </form>
   </ion-content>
-</ion-modal-view>
+</ion-view>
