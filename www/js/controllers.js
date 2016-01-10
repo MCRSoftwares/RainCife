@@ -125,8 +125,13 @@ angular.module('starter.controllers', ['ngOpenFB'])
    }).then(function(modal) {
      $scope.modal = modal
    })
+
+   var ws = new WebSocket("ws://104.236.49.84/api/v1/marcadores/socket/");
+   console.log(ws)
+   ws.onmessage = function(message) {
+       vm.loadMarker();
+   }
   vm.centerOnMe = function () {
-    vm.loadMarker();
     $scope.loading = $ionicLoading.show({
         templateUrl:"templates/loading.html",
         showBackdrop: false
@@ -186,7 +191,6 @@ vm.addlocalizacao = function(event){
      longitude: String($scope.newLocation.lng)}
      })
    $scope.modal.hide();
-   vm.loadMarker();
  }
  vm.showDetail = function(e, positions) {
    vm.position = positions;
