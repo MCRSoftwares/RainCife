@@ -106,18 +106,18 @@ angular.module('starter.controllers', ['ngOpenFB'])
          this.id = "";
          this.icon = "";
        };
-  
+
 
   $http.get("http://api.openweathermap.org/data/2.5/weather?lat=-8.05389&lon=-34.881111&units=metric&lang=pt&appid=61814621f0d067e1af19cb6efbb01879")
   .success(function(response){
         console.log(response);
-        // prev.isao.push({temperatura:response.main.temp, tempeaturaMinima: response.main.temp_min, tempMaxima: response.main.temp_max, tempo:[response.weather] }); 
+        // prev.isao.push({temperatura:response.main.temp, tempeaturaMinima: response.main.temp_min, tempMaxima: response.main.temp_max, tempo:[response.weather] });
         $scope.NovaPrevisao = new Previsao();
         $scope.NovaPrevisao.temp = response.main.temp;
-        $scope.NovaPrevisao.tempo = response.weather[0].description;   
-        $scope.NovaPrevisao.id = response.weather[0].id;    
-        $scope.NovaPrevisao.icon = response.weather[0].icon; 
-        
+        $scope.NovaPrevisao.tempo = response.weather[0].description;
+        $scope.NovaPrevisao.id = response.weather[0].id;
+        $scope.NovaPrevisao.icon = response.weather[0].icon;
+
     })
     .error(function(response){
     });
@@ -139,6 +139,13 @@ angular.module('starter.controllers', ['ngOpenFB'])
      $scope.modal = modal
    })
 
+   $ionicModal.fromTemplateUrl('templates/modalMarker.html', {
+     scope: $scope,
+     animation: 'slide-in-up'
+   }).then(function(modal) {
+     $scope.modalMarker = modal
+   })
+
    var ws = new WebSocket("ws://104.236.49.84/api/v1/marcadores/socket/");
    console.log(ws)
    ws.onmessage = function(message) {
@@ -157,7 +164,6 @@ angular.module('starter.controllers', ['ngOpenFB'])
          var lat  = position.coords.latitude
          var long = position.coords.longitude
          $scope.map.setCenter(new google.maps.LatLng(lat, long));
-          $scope.map.zoom = 18;
          $ionicLoading.hide();
      }, function(error) {
        alert('Erro ao tentar conseguir localização: ' + error.message);
@@ -205,15 +211,18 @@ vm.addlocalizacao = function(event){
      })
    $scope.modal.hide();
  }
- vm.showDetail = function(e, positions) {
-   vm.position = positions;
-   vm.map.showInfoWindow.apply('marker-info', '');
+ vm.showDetail = function(marker, obj) {
+  $scope.marcador = obj;
+  console.log(obj);
+  $scope.modalMarker.show();
  };
  vm.loadMarker = function() {
    $http.get("http://104.236.49.84/api/v1/marcadores/")
    .success(function(response){
+        vm.positions = []
         for (var i = 0; i < response.data.length; i++) {
-          vm.positions.push({pos:[parseFloat(response.data[i].latitude), parseFloat(response.data[i].longitude)]});
+          vm.positions.push({pos:[parseFloat(response.data[i].latitude), parseFloat(response.data[i].longitude)]
+            ,intensidade:response.data[i].intensidade, id:response.data[i].id, usuario_id:response.data[i].usuario_id  });
         }
      })
      .error(function(response){

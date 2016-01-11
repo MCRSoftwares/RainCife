@@ -1,0 +1,25 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-positive">
+    <h1 class="title">Detalhes do Alagamento</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="modalMarker.hide()">Fechar</button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="padding">
+      <div class="list">
+        <label class="item text-center">
+          <h3>Localização do Alagamento</h3>
+            <ion-content class="has-header" scroll="false" data-tap-disabled="true">
+              <map zoom="17" center="{{marcador.pos[0]}},{{marcador.pos[1]}}" style="height:80%  width:80%;" street-view-control= "false"  zoom-control="false" map-type-control="false">
+              <marker clickable="false" position="{{marcador.pos[0]}},{{marcador.pos[1]}}"icon="img/marker.png" > </marker>
+              </map>
+            </ion-content>
+            <br><br><br><br><br><br><br>
+        </label>
+        <label class="item text-center">
+          <h2><b>A rua está:<b></h2>
+          {{marcador.intensidade}}
+        </label>
+      </div>
+  </ion-content>
+</ion-modal-view>
