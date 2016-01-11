@@ -9,7 +9,7 @@
       </ion-nav-buttons>
       <ion-content class="has-header" scroll="false" data-tap-disabled="true">
           <map zoom="17" center=" -8.05428, -34.8813" style="height:100%;" street-view-control= "false"  zoom-control="false"
-            map-type-control="false" on-click="vm.addlocalizacao()" on-tap="vm.addlocalizacao()">
+            map-type-control="false"  on-click="vm.addlocalizacao()">
             <marker clickable="false" ng-repeat="p in vm.positions" position="{{p.pos}}" title="pos: {{p.pos}}" icon="img/marker.png" on-mousedown = "vm.showDetail()"> </marker>
           </map>
       </ion-content>
