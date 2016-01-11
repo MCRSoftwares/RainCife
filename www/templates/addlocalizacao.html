@@ -1,0 +1,36 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-positive">
+    <h1 class="title">Novo alagamento</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="modal.hide()">Cancelar</button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <form name="locationForm" ng-submit="vm.addMarker()">
+      <div class="list">
+        <label class="item text-center">
+          <h3>Localização do Alagamento</h3>
+            <ion-content class="has-header" scroll="false" data-tap-disabled="true">
+              <map zoom="17" center="{{newLocation.lat}},{{newLocation.lng}}" style="height:80%  width:80%;" street-view-control= "false"  zoom-control="false" map-type-control="false">
+              <marker clickable="false" position="{{newLocation.lat}},{{newLocation.lng}}"icon="img/marker.png" > </marker>
+              </map>
+            </ion-content>
+            <br><br><br><br><br><br><br>
+        </label>
+        <label class="item text-center">
+          <h2><b>Qual estado está a rua?<b></h2>
+        </label>
+        <label class="item ">
+          <div>
+            <ion-radio ng-model="vm.choice" ng-value="Pouca Alagada">Pouca Alagada</ion-radio>
+            <ion-radio ng-model="vm.choice" ng-value="Alagada">Alagada</ion-radio>
+            <ion-radio ng-model="vm.choice" ng-value="Muito Alagada">Muito Alagada</ion-radio>
+          </div>
+        </label>
+      </div>
+      <div class="padding">
+        <button class="button button-block button-positive">Adicionar Novo Alagamento</button>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

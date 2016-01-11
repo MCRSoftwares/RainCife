@@ -1,0 +1,27 @@
+<ion-view>
+  <ion-content scroll="false">
+    <form ng-submit="Cadastro.cadastrar()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Usuário</span>
+          <input type="text" ng-model="Cadastro.data.username" placeholder="Usuario">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">E-mail</span>
+          <input type="email" ng-model="Cadastro.data.email" placeholder="exmeplo@email.com">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Senha</span>
+          <input type="text" ng-if="showPasswordIsChecked" name="password" ng-model="Cadastro.data.password" placeholder="Senha">
+          <input type="password" ng-if="!showPasswordIsChecked" name="password" ng-model="Cadastro.data.password"  placeholder="*****">
+        </label>
+        <label>
+        <ion-checkbox ng-model="showPasswordIsChecked">Mostrar senha<BR></ion-checkbox>
+      </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Cadastrar</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

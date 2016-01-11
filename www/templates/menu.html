@@ -1,0 +1,39 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-positive">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu class="menu"side="left">
+    <ion-content scroll="false">
+      <ion-list>
+      <!--  <ion-item menu-close ng-click="login()">
+          <b class="ion-android-person">          Perfil</b>
+        </ion-item> -->
+        <ion-item menu-close href="#/app/mapa" >
+          <b class="ion-android-map">     Mapa de Alagamentos</b>
+        </ion-item>
+        <ion-item menu-close href="#/app/previsao" >
+          <b class="ion-android-cloud">     Previsão do Tempo</b>
+        </ion-item>
+        <ion-item menu-close href="#/app/bug">
+          <b class="ion-bug">     Reportar Bug</b>
+        </ion-item>
+        <ion-item menu-close href="#/app/sobre">
+          <b class="ion-android-alert">     Sobre</b>
+        </ion-item>
+        <ion-item menu-close href="#/app/logout">
+          <b class="ion-power">     Sair</b>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

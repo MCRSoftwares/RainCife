@@ -1,0 +1,17 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-view title="">
+      <ion-nav-buttons side ="right">
+        <label class="item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="search" placeholder="Pesquise Um Endereço" places-auto-complete ng-model="vm.address" on-place-changed="vm.placeChanged()">
+        </label>
+        <button class="button button-icon button-clear ion-android-locate" ng-click="vm.centerOnMe()"></button>
+      </ion-nav-buttons>
+      <ion-content class="has-header" scroll="false" data-tap-disabled="true">
+          <map zoom="17" center=" -8.05428, -34.8813" style="height:100%;" street-view-control= "false"  zoom-control="false"
+            map-type-control="false"  on-click="vm.addlocalizacao()">
+            <marker clickable="true" ng-repeat="p in vm.positions" position="{{p.pos}}" title="pos: {{p.pos}}" icon="img/marker.png" on-mousedown = "vm.showDetail(p)"></marker>
+          </map>
+      </ion-content>
+  </ion-view>
+</ion-side-menus>
