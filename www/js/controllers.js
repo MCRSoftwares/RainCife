@@ -115,6 +115,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
 .controller('MapCtrl', function($scope, $ionicLoading, $cordovaGeolocation, NgMap,$state, $ionicModal,$http, $window) {
    var vm = this;
    vm.data = {};
+
   $scope.$on('mapInitialized', function(event, map) {
     $scope.map = map;
      vm.loadMarker();
@@ -177,23 +178,21 @@ vm.addlocalizacao = function(event){
       $scope.newLocation.lng = ll.lng();
       $scope.modal.show();
     }
-}
+};
   vm.addMarker = function(event) {
-    var intensidade = vm.data.choice;
-    if (intensidade == undefined) {
-      intensidade = 'Alagada';
-    }
+    vm.intensidade;
+
     $http({
      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
      url: 'http://104.236.49.84/api/v1/marcadores/criar/',
      method: "POST",
      data: {latitude: String($scope.newLocation.lat),
-     intensidade: intensidade,
+     intensidade: vm.intensidade,
      usuario_id: String($window.localStorage['usuario']),
      longitude: String($scope.newLocation.lng)}
      })
    $scope.modal.hide();
- }
+ };
  vm.showDetail = function(e, positions) {
    vm.position = positions;
    vm.map.showInfoWindow.apply('marker-info', '');
