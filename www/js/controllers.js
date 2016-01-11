@@ -97,18 +97,31 @@ angular.module('starter.controllers', ['ngOpenFB'])
 
 .controller("previCtrl", function($scope, $ionicLoading, $cordovaGeolocation, $state, $http){
   var prev = this;
-  prev.isao =[
- ];
+  prev.data = [];
+  prev.isao =[];
 
-  $http.get("http://api.openweathermap.org/data/2.5/weather?lat=-8.05389&lon=-34.881111&appid=2de143494c0b295cca9337e1e96b00e0'")
+  var Previsao = function() {
+         this.temp  = "";
+         this.tempo  = "";
+         this.id = "";
+         this.icon = "";
+       };
+  
+
+  $http.get("http://api.openweathermap.org/data/2.5/weather?lat=-8.05389&lon=-34.881111&units=metric&lang=pt&appid=61814621f0d067e1af19cb6efbb01879")
   .success(function(response){
-       for (var i = 0; i < response.data.length; i++) {
-         prev.isao.push({temperatura:parseFloat(response.data[i].temp), tempeaturaMinima: parseFloat(response.data[i].temp_min), tempMaxima: parseFloat(response.data[i].temp_max), tempo:[response.data[i].weather] });
-       }
+        console.log(response);
+        // prev.isao.push({temperatura:response.main.temp, tempeaturaMinima: response.main.temp_min, tempMaxima: response.main.temp_max, tempo:[response.weather] }); 
+        $scope.NovaPrevisao = new Previsao();
+        $scope.NovaPrevisao.temp = response.main.temp;
+        $scope.NovaPrevisao.tempo = response.weather[0].description;   
+        $scope.NovaPrevisao.id = response.weather[0].id;    
+        $scope.NovaPrevisao.icon = response.weather[0].icon; 
+        
     })
     .error(function(response){
     });
-    console.console.log(prev.isao);
+
 })
 
 //controler do mapa
