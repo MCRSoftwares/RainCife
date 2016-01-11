@@ -163,7 +163,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
        .then(function (position) {
          var lat  = position.coords.latitude
          var long = position.coords.longitude
-         $scope.map.setCenter(new google.maps.LatLng(lat, long));
+         vm.map.setCenter(new google.maps.LatLng(lat, long));
          $ionicLoading.hide();
      }, function(error) {
        alert('Erro ao tentar conseguir localização: ' + error.message);
@@ -196,16 +196,13 @@ vm.addlocalizacao = function(event){
   $scope.modal.show();
  }
   vm.addMarker = function(event) {
-    var intensidade = vm.data.choice;
-    if (intensidade == undefined) {
-      intensidade = 'Alagada';
-    }
+    vm.intensidade;
     $http({
      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
      url: 'http://104.236.49.84/api/v1/marcadores/criar/',
      method: "POST",
      data: {latitude: String($scope.newLocation.lat),
-     intensidade: intensidade,
+     intensidade: vm.intensidade,
      usuario_id: String($window.localStorage['usuario']),
      longitude: String($scope.newLocation.lng)}
      })

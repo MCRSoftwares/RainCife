@@ -110,7 +110,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngMap','ngCordova', 
     views: {
       'menuContent': {
         templateUrl: 'templates/previsao.html',
-        controller: 'previCtrl as prev'
+      controller: 'previCtrl as prev'
       }
     }
   })
