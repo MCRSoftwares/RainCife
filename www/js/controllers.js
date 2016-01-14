@@ -16,25 +16,21 @@ angular.module('starter.controllers', ['ngOpenFB'])
     })
     .then(function(response) {
             $window.localStorage['usuario'] = response.data.data[0].id;
+            $rootScope.usuario = response.data.data[0].id;
             $state.go('app.mapa');
-             console.log("sucesso") ;
         },
         function(response) { // optional
-            console.log("fracassso") ;
             alert('Usuário ou Senha Invalidos');
             $state.go('app.login');
             //$window.location.href = "/#/app/login";
         }
     );
-    console.log("Login user: " + viewController.loginData.username + "- PW: " + viewController.loginData.password);
   };
   //Recomendo fazer um controller separado pro login com o Facebook
   this.fbLogin = function () {
     ngFB.login({scope: 'public_profile, '}).then(
         function (response) {
             if (response.status === 'connected') {
-                console.log('Facebook login succeeded');
-
                 ngFB.api({
                     path: '/me',
                     params: {fields: 'id,name'}
@@ -45,7 +41,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
                         $state.go('app.mapa');
                     },
                     function (error) {
-                        console.log('Facebook error: ' + error.error_description);
+
                     });
             } else {
                 alert('Ops, aconteceu algum quando você tentou logar com o Facebook');
@@ -110,7 +106,6 @@ angular.module('starter.controllers', ['ngOpenFB'])
 
   $http.get("http://api.openweathermap.org/data/2.5/weather?lat=-8.05389&lon=-34.881111&units=metric&lang=pt&appid=61814621f0d067e1af19cb6efbb01879")
   .success(function(response){
-        console.log(response);
         // prev.isao.push({temperatura:response.main.temp, tempeaturaMinima: response.main.temp_min, tempMaxima: response.main.temp_max, tempo:[response.weather] });
         $scope.NovaPrevisao = new Previsao();
         $scope.NovaPrevisao.temp = response.main.temp;
@@ -125,7 +120,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
 })
 
 //controler do mapa
-.controller('MapCtrl', function($scope, $ionicLoading, $cordovaGeolocation, NgMap,$state, $ionicModal,$http, $window) {
+.controller('MapCtrl', function($scope, $ionicLoading, $cordovaGeolocation, NgMap,$state, $ionicModal,$http, $window, $rootScope) {
    var vm = this;
    vm.data = {};
   $scope.$on('mapInitialized', function(event, map) {
@@ -147,7 +142,6 @@ angular.module('starter.controllers', ['ngOpenFB'])
    })
 
    var ws = new WebSocket("ws://104.236.49.84/api/v1/marcadores/socket/");
-   console.log(ws)
    ws.onmessage = function(message) {
        vm.loadMarker();
    }
@@ -173,7 +167,6 @@ angular.module('starter.controllers', ['ngOpenFB'])
   // geo-coding
   vm.placeChanged = function($state) {
     vm.place = this.getPlace();
-    console.log('location', vm.place.geometry.location);
     vm.map.setCenter(vm.place.geometry.location);
     $scope.clearSearch();
   }
@@ -210,9 +203,12 @@ vm.addlocalizacao = function(event){
  }
  vm.showDetail = function(marker, obj) {
   $scope.marcador = obj;
-  console.log(obj);
   $scope.modalMarker.show();
  };
+ vm.deleteMarker = function(){
+   vm.positions.splice(vm.positions.indexOf($scope.marcador),1);
+   $scope.modalMarker.hide();
+ }
  vm.loadMarker = function() {
    $http.get("http://104.236.49.84/api/v1/marcadores/")
    .success(function(response){
