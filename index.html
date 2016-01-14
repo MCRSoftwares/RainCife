@@ -1,155 +1,307 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<!--[if lt IE 7]><html lang="en" class="no-js ie6"><![endif]-->
+<!--[if IE 7]><html lang="en" class="no-js ie7"><![endif]-->
+<!--[if IE 8]><html lang="en" class="no-js ie8"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
 
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- favicon -->
-    <link rel="icon" href="Imagens/favicon.png" type="image/x-icon"/>
-
+    <meta charset="UTF-8">
     <title>RainCife</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="shortcut icon" href="favicon.png">
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.css">
 
-    <!-- Custom CSS -->
-    <link href="css/scrolling-nav.css" rel="stylesheet">
-    <!-- Fonts Google-->
-    <link href='https://fonts.googleapis.com/css?family=Lobster|Nixie+One|Arvo:700|Montserrat' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="js/rs-plugin/css/settings.css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <link rel="stylesheet" href="css/freeze.css">
+
+
+    <script type="text/javascript" src="js/modernizr.custom.32033.js"></script>
+
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
 </head>
 
-<!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+<body>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">
-                      <img alt="Brand" src="Imagens/logo.png">
-                </a>
+    <div class="pre-loader">
+        <div class="load-con">
+            <img src="img/freeze/logo.png" class="animated fadeInDown" alt="">
+            <div class="spinner">
+              <div class="bounce1"></div>
+              <div class="bounce2"></div>
+              <div class="bounce3"></div>
             </div>
+        </div>
+    </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                    <li class="hidden">
-                        <a class="page-scroll" href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#about">Sobre</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#services">Protótipo</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Beta Tester</a>
+    <header>
+
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="fa fa-bars fa-lg"></span>
+                        </button>
+                        <a class="navbar-brand" href="index.html">
+                             <img src="img/freeze/logo.png" alt="" class="logo">
+                         </a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#about">Sobre</a>
+                            </li>
+                            <li><a href="#features">Funcionalidades</a>
+                            </li>
+                            <li><a href="#screens">Telas</a>
+                            </li>
+                            <li><a href="#demo">demo</a>
+                            </li>
+                            <li><a class="getApp" href="#getApp">Download</a>
+                            </li>
+                            <li><a href="#support">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-->
+        </nav>
+
+
+        <!--RevSlider-->
+        <div class="tp-banner-container">
+            <div class="tp-banner" >
+                <ul>
+                    <!-- SLIDE  -->
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1500" >
+                        <!-- MAIN IMAGE -->
+                        <div class="tp-caption large_white_light sfr container text-center"  data-y="center" data-hoffset="0" data-voffset="-80" data-speed="500" data-start="1400" data-easing="Power4.easeOut">
+                            RainCife
+                          </div>
+                        <div class="tp-caption large_white_light sfr container text-center"  data-y="center" data-hoffset="0" data-voffset="-80" data-speed="500" data-start="1400" data-easing="Power4.easeOut">
+                              <br>
+                              Monitoramente de chuvas e alagamentos.
+                        </div>
+
+                        <div class="tp-caption sfb hidden-xs container text-center" data-x="center" data-y="center" data-hoffset="0" data-voffset="85" data-speed="1000" data-start="1700" data-easing="Power4.easeOut">
+                            <a href="#about" class="btn btn-primary inverse btn-lg">Saiba Mais</a>
+                            <a href="#getApp" class="btn btn-default btn-lg">Download</a>
+                        </div>
+
                     </li>
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container -->
-    </nav>
 
-    <!-- Intro Section -->
-    <header class="header-image">
-      <div class="headline">
-          <div class="container">
-              <h1>Todos os alagamentos do Recife em um só lugar</h1>
-              <a href="#about" class="btn btn-circle page-scroll">
-                         <i class=" glyphicon glyphicon-circle-arrow-down"></i>
-               </a>
-          </div>
-      </div>
-  </header>
 
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="cabecalho">O que é o RainCife?</h1>
-                    <div class="col-md-6">
-                      <br><br>
+    </header>
 
-                      <p>Monitoramento de chuvas e alagamentos na palma da sua mão.
-                      Utilizamos o dados da Agência Pernambucana de Águas e Clima e os fornecidos
-                       pelo usuário para aumentar a confiabiliade do RainCife. </p>
 
+    <div class="wrapper">
+
+
+
+        <section id="about">
+            <div class="container">
+
+                <div class="section-heading scrollpoint sp-effect3">
+                    <h1>Sobre</h1>
+                    <div class="divider"></div>
+                    <p>O RainCife</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-3 col-xs-7" >
+                        <div class="about-item scrollpoint sp-effect5">
+                            <i class="fa fa-mobile fa-2x"></i>
+                            <h3>Interativo</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                        </div>
                     </div>
-                    <img class="img-responsive " src="Imagens/mockaupusuario.png">
+                    <div class="col-md-4 col-sm-3 col-xs-6" >
+                        <div class="about-item scrollpoint sp-effect5">
+                            <i class="fa fa-users fa-2x"></i>
+                            <h3>Interação Com Redes Sociais</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-3 col-xs-6" >
+                        <div class="about-item scrollpoint sp-effect1">
+                            <i class="fa fa-sliders fa-2x"></i>
+                            <h3>Suporte Eficiente</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services-section">
-        <div class="container">
-            <div class="row">
-                <div>
-                    <h1 class="cabecalho">Dê uma olhada em como vai ficar o RainCife</h1>
-                    <div class="col-md-6">
-                      <br><br><br><br>
-                      <h2>Se quiser olhar o nosso protótipo é só acessar esse link <a href="https://mockingbot.com/app/0IIAuAdcTkg0Y4PM3DFQ" target="_blank">aqui</a></h2>
-                      <h2>ou</h2>
-                      <h2>Direto pelo Celular</h2>
-                      <img class="text-center" src="Imagens/qrcode.png">
-
+        <section id="features">
+            <div class="container">
+                <div class="section-heading scrollpoint sp-effect3">
+                    <h1>Funcionalidades</h1>
+                    <div class="divider"></div>
+                    <p>O que o RainCife faz?</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 scrollpoint sp-effect1">
+                      <div class="media feature">
+                          <a class="pull-left" href="#">
+                              <i class="fa fa-map-marker fa-2x"></i>
+                          </a>
+                          <div class="media-body">
+                              <h3 class="media-heading">Apontar Alagamentos</h3>
+                          </div>
+                      </div>
                     </div>
-                    <iframe src="https://mockingbot.com/app/0IIAuAdcTkg0Y4PM3DFQ/embed" width="440" height="828" allowTransparency="true" frameborder="0"></iframe>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="cabecalho">Beta Tester</h1>
-                     <!-- Forms do typeforms
-                    <div class="typeform-widget" data-url="https://durvalcc.typeform.com/to/k7LIg9" data-text="BetaTester"  scrolling="no" style="width:100%;height:500px;"></div>
-                    <div style="font-family: Sans-Serif;font-size: 12px;color: #999;opacity: 0.5; padding-top: 5px;"></div>
-                    -->
+                    <div class="col-md-4 col-sm-4" >
+                        <img src="img/freeze/iphone-freeze.png" class="img-responsive scrollpoint sp-effect5" alt="">
+                    </div>
+                    <div class="col-md-4 col-sm-4 scrollpoint sp-effect2">
+                        <div class="media feature">
+                            <a class="pull-left" href="#">
+                                <i class="fa fa-compass fa-2x"></i>
+                            </a>
+                            <div class="media-body">
+                                <h3 class="media-heading">Uso de geolocalização</h3>
+                            </div>
+                        </div>
+                        <div class="media active feature">
+                            <a class="pull-left" href="#">
+                                <i class="fa fa-plus fa-2x"></i>
+                            </a>
+                            <div class="media-body">
+                                <h3 class="media-heading">E muito mais!</h3>
+                                Que serão lançadas de acordo com os feedbakcs do usuários Alpha
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+        <section id="screens">
+            <div class="container">
 
-    <!-- Bootstrap Core JavaScript -->
+                <div class="section-heading scrollpoint sp-effect3">
+                    <h1>Telas</h1>
+                    <div class="divider"></div>
+                    <p>Dê uma olhada no app, antes de baixar.</p>
+                </div>
+
+                <div class="filter scrollpoint sp-effect3">
+                    <a href="javascript:void(0)" class="button js-filter-all active">Todas as telas</a>
+                    <a href="javascript:void(0)" class="button js-filter-one">Inicio</a>
+                    <a href="javascript:void(0)" class="button js-filter-two">Mapa</a>
+                    <a href="javascript:void(0)" class="button js-filter-three">Previsão</a>
+                </div>
+                <div class="slider filtering scrollpoint sp-effect5" >
+                    <div class="one">
+                        <img class="responsive"src="img/freeze/screens/1.png" alt="">
+                        <h4>Profile Page</h4>
+                    </div>
+                    <div class="two">
+                        <img class="responsive" src="img/freeze/screens/2.png" alt="">
+                        <h4>Toggel Menu</h4>
+                    </div>
+                    <div class="three">
+                        <img  class="responsive" src="img/freeze/screens/3.png" alt="">
+                        <h4>Weather Forcast</h4>
+                    </div>
+                    <div class="one">
+                        <img class="responsive" src="img/freeze/screens/4.png" alt="">
+                        <h4>Sign Up</h4>
+                    </div>
+                    <div class="one">
+                        <img  class="responsive" src="img/freeze/screens/5.png" alt="">
+                        <h4>Event Calendar</h4>
+                    </div>
+                    <div class="two">
+                        <img class="responsive" src="img/freeze/screens/6.png" alt="">
+                        <h4>Some Options</h4>
+                    </div>
+                    <div class="three">
+                        <img class="responsive" src="img/freeze/screens/7.png" alt="">
+                        <h4>Sales Analysis</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="getApp">
+            <div class="container-fluid">
+                <div class="section-heading inverse scrollpoint sp-effect3">
+                    <h1>Download</h1>
+                    <div class="divider"></div>
+                    <p>Por enquanto que não estamos, na google Play. Você terá que baixar nosso arquivo
+                     .APK para participar dos tester alpha</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="platforms">
+                            <a href="#" class="btn btn-primary inverse scrollpoint sp-effect1">
+                                <i class="fa fa-android fa-3x pull-left"></i>
+                                <span>Download </span><br>
+                                <b>Android</b>
+                            </a>
+                                <a href="#" class="btn btn-primary inverse scrollpoint sp-effect2 disabled">
+                                    <i class="fa fa-apple fa-3x pull-left"></i>
+                                    <span>Ainda não disponivel para</span><br>
+                                    <b>Apple IOS</b>
+                                </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer id="support">
+            <div class="container">
+                <a href="#" class="scrollpoint sp-effect3">
+                    <img src="img/freeze/logo.png" alt="" class="logo">
+                </a>
+                <div class="social">
+                    <a href="#" class="scrollpoint sp-effect3"><i class="fa fa-twitter fa-lg"></i></a>
+                    <a href="#" class="scrollpoint sp-effect3"><i class="fa fa-google-plus fa-lg"></i></a>
+                    <a href="#" class="scrollpoint sp-effect3"><i class="fa fa-facebook fa-lg"></i></a>
+                </div>
+                <div class="rights">
+                    <p>Template by <a href="http://www.scoopthemes.com" target="_blank">ScoopThemes</a></p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/placeholdem.min.js"></script>
+    <script src="js/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+    <script src="js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/scripts.js"></script>
 
-    <!-- Scrolling Nav JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/scrolling-nav.js"></script>
-    <!-- typeforms -->
-    <script>(function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id='typef_orm',b='https://s3-eu-west-1.amazonaws.com/share.typeform.com/';if(!gi.call(d,id)){js=ce.call(d,'script');js.id=id;js.src=b+'widget.js';q=gt.call(d,'script')[0];q.parentNode.insertBefore(js,q)}})()</script>
+    <script>
+        $(document).ready(function() {
+            appMaster.preLoader();
+        });
+    </script>
 
 </body>
 
